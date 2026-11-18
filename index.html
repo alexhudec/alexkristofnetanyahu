@@ -7,54 +7,83 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="calculator">
-    <div class="display">
-      <div id="history"></div>
-      <div id="expression">0</div>
-      <div id="preview"></div>
+  <div class="calculator" id="calculator">
+    <div class="tabs">
+      <button class="tab active" data-tab="calc">Calculator</button>
+      <button class="tab" data-tab="graph">Graph</button>
     </div>
 
-    <div class="keys">
-      <button class="fn" id="mode" data-key="mode">DEG</button>
-      <button class="fn" data-key="sin(">sin</button>
-      <button class="fn" data-key="cos(">cos</button>
-      <button class="fn" data-key="tan(">tan</button>
-      <button class="clear" data-key="AC">AC</button>
+    <!-- ========== CALCULATOR ========== -->
+    <div id="calcPanel">
+      <div class="display">
+        <div id="history"></div>
+        <div id="expression">0</div>
+        <div id="preview"></div>
+      </div>
 
-      <button class="fn" data-key="ln(">ln</button>
-      <button class="fn" data-key="log(">log</button>
-      <button class="fn" data-key="√(">√</button>
-      <button class="fn" data-key="^2">x²</button>
-      <button class="clear" data-key="DEL">⌫</button>
+      <div class="keys">
+        <button class="fn" id="mode" data-key="mode">DEG</button>
+        <button class="fn" data-key="sin(">sin</button>
+        <button class="fn" data-key="cos(">cos</button>
+        <button class="fn" data-key="tan(">tan</button>
+        <button class="clear" data-key="AC">AC</button>
 
-      <button class="fn" data-key="^">xʸ</button>
-      <button class="fn" data-key="(">(</button>
-      <button class="fn" data-key=")">)</button>
-      <button class="fn" data-key="%">%</button>
-      <button class="op" data-key="÷">÷</button>
+        <button class="fn" data-key="ln(">ln</button>
+        <button class="fn" data-key="log(">log</button>
+        <button class="fn" data-key="√(">√</button>
+        <button class="fn" data-key="^2">x²</button>
+        <button class="clear" data-key="DEL">⌫</button>
 
-      <button class="fn" data-key="π">π</button>
-      <button data-key="7">7</button>
-      <button data-key="8">8</button>
-      <button data-key="9">9</button>
-      <button class="op" data-key="×">×</button>
+        <button class="fn" data-key="^">xʸ</button>
+        <button class="fn" data-key="(">(</button>
+        <button class="fn" data-key=")">)</button>
+        <button class="fn" data-key="%">%</button>
+        <button class="op" data-key="÷">÷</button>
 
-      <button class="fn" data-key="e">e</button>
-      <button data-key="4">4</button>
-      <button data-key="5">5</button>
-      <button data-key="6">6</button>
-      <button class="op" data-key="−">−</button>
+        <button class="fn" data-key="π">π</button>
+        <button data-key="7">7</button>
+        <button data-key="8">8</button>
+        <button data-key="9">9</button>
+        <button class="op" data-key="×">×</button>
 
-      <button class="fn" data-key="!">x!</button>
-      <button data-key="1">1</button>
-      <button data-key="2">2</button>
-      <button data-key="3">3</button>
-      <button class="op" data-key="+">+</button>
+        <button class="fn" data-key="e">e</button>
+        <button data-key="4">4</button>
+        <button data-key="5">5</button>
+        <button data-key="6">6</button>
+        <button class="op" data-key="−">−</button>
 
-      <button class="fn" data-key="Ans">Ans</button>
-      <button data-key="0">0</button>
-      <button data-key=".">.</button>
-      <button class="equals" data-key="=">=</button>
+        <button class="fn" data-key="!">x!</button>
+        <button data-key="1">1</button>
+        <button data-key="2">2</button>
+        <button data-key="3">3</button>
+        <button class="op" data-key="+">+</button>
+
+        <button class="fn" data-key="Ans">Ans</button>
+        <button data-key="0">0</button>
+        <button data-key=".">.</button>
+        <button class="equals" data-key="=">=</button>
+      </div>
+    </div>
+
+    <!-- ========== GRAPH ========== -->
+    <div id="graphPanel" hidden>
+      <div class="graph-wrap">
+        <canvas id="graph"></canvas>
+        <div id="coords"></div>
+        <div class="graph-controls">
+          <button id="zoomIn" title="Zoom in">+</button>
+          <button id="zoomOut" title="Zoom out">−</button>
+          <button id="resetView" title="Reset view">⟲</button>
+        </div>
+      </div>
+
+      <div class="functions">
+        <label class="fx" style="--c:#ff6b8b"><span class="dot"></span>y₁ =<input value="sin(x)" spellcheck="false"></label>
+        <label class="fx" style="--c:#6bc5ff"><span class="dot"></span>y₂ =<input value="x^2/4" spellcheck="false"></label>
+        <label class="fx" style="--c:#8affb0"><span class="dot"></span>y₃ =<input value="" placeholder="e.g. 2x+1" spellcheck="false"></label>
+      </div>
+
+      <p class="hint">Drag to move · scroll to zoom · trig uses radians</p>
     </div>
   </div>
 

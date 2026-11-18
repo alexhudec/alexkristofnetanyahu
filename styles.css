@@ -4,6 +4,8 @@
   padding: 0;
 }
 
+[hidden] { display: none !important; }
+
 body {
   min-height: 100vh;
   display: flex;
@@ -15,12 +17,43 @@ body {
 
 .calculator {
   width: 380px;
+  max-width: 95vw;
   padding: 22px;
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transition: width 0.3s ease;
+}
+
+.calculator.wide { width: 600px; }
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.tabs .tab {
+  flex: 1;
+  height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.tabs .tab:hover { background: rgba(255, 255, 255, 0.06); }
+
+.tabs .tab.active {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
 }
 
 /* ---------- Display ---------- */
@@ -129,3 +162,109 @@ button:active, button.pressed { transform: scale(0.94); }
   box-shadow: 0 8px 20px rgba(255, 100, 100, 0.35);
 }
 .equals:hover { filter: brightness(1.1); background: linear-gradient(135deg, #ff9a3c, #ff5e7e); }
+
+/* ---------- Graph ---------- */
+.graph-wrap {
+  position: relative;
+  height: 380px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+#graph {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+
+#graph.dragging { cursor: grabbing; }
+
+#coords {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+  color: white;
+  background: rgba(10, 12, 25, 0.75);
+  pointer-events: none;
+}
+
+#coords:empty { display: none; }
+
+.graph-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.graph-controls button {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  border-radius: 10px;
+  background: rgba(10, 12, 25, 0.75);
+}
+
+.graph-controls button:hover { background: rgba(40, 45, 80, 0.9); }
+
+.functions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.fx {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  transition: border-color 0.15s;
+}
+
+.fx:focus-within { border-color: var(--c); }
+.fx.invalid { border-color: #ff5e5e; }
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 10px var(--c);
+}
+
+.fx input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  font-family: inherit;
+}
+
+.fx input::placeholder { color: rgba(255, 255, 255, 0.25); }
+
+.hint {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+}
