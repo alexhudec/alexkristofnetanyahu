@@ -1,19 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Calculator</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Calculator</h1>
-  <input type="number" id="num1" placeholder="First number">
-  <input type="number" id="num2" placeholder="Second number">
-  <br>
-  <button onclick="calculate('+')">+</button>
-  <button onclick="calculate('-')">-</button>
-  <button onclick="calculate('*')">×</button>
-  <button onclick="calculate('/')">÷</button>
-  <p id="result"></p>
+  <div class="calculator">
+    <div class="display">
+      <div id="history"></div>
+      <div id="expression">0</div>
+      <div id="preview"></div>
+    </div>
+
+    <div class="keys">
+      <button class="fn" id="mode" data-key="mode">DEG</button>
+      <button class="fn" data-key="sin(">sin</button>
+      <button class="fn" data-key="cos(">cos</button>
+      <button class="fn" data-key="tan(">tan</button>
+      <button class="clear" data-key="AC">AC</button>
+
+      <button class="fn" data-key="ln(">ln</button>
+      <button class="fn" data-key="log(">log</button>
+      <button class="fn" data-key="√(">√</button>
+      <button class="fn" data-key="^2">x²</button>
+      <button class="clear" data-key="DEL">⌫</button>
+
+      <button class="fn" data-key="^">xʸ</button>
+      <button class="fn" data-key="(">(</button>
+      <button class="fn" data-key=")">)</button>
+      <button class="fn" data-key="%">%</button>
+      <button class="op" data-key="÷">÷</button>
+
+      <button class="fn" data-key="π">π</button>
+      <button data-key="7">7</button>
+      <button data-key="8">8</button>
+      <button data-key="9">9</button>
+      <button class="op" data-key="×">×</button>
+
+      <button class="fn" data-key="e">e</button>
+      <button data-key="4">4</button>
+      <button data-key="5">5</button>
+      <button data-key="6">6</button>
+      <button class="op" data-key="−">−</button>
+
+      <button class="fn" data-key="!">x!</button>
+      <button data-key="1">1</button>
+      <button data-key="2">2</button>
+      <button data-key="3">3</button>
+      <button class="op" data-key="+">+</button>
+
+      <button class="fn" data-key="Ans">Ans</button>
+      <button data-key="0">0</button>
+      <button data-key=".">.</button>
+      <button class="equals" data-key="=">=</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
